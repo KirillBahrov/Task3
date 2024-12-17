@@ -3,31 +3,38 @@
 #include "../Solver/IStreamGeneretor.h"
 #include "../Solver/MyExercise.h"
 
-
 int main() {
     setlocale(LC_ALL, "RU");
 
     RUT::RandomGenerator<int> intGen(-100, 100);
     RUT::MyExercise<int> intExercise(3, 3, intGen);
 
-    std::cout << "Матрица с случайными значениями (int):\n";
+    std::cout << "Matrix with random values (int):\n";
     intExercise.fillMatrix();
     intExercise.printMatrix();
 
-    std::cout << "\nПосле Task1 (замена максимального по модулю элемента на противоположный):\n";
+    std::cout << "\nAfter Task1 (replacing the maximum modulo element with the opposite one):\n";
     intExercise.Task1();
     intExercise.printMatrix();
 
-    std::cout << "\nПосле Task2 (вставка первой строки после каждой чётной строки):\n";
+    std::cout << "\nAfter Task2 (inserting the first row after each even row):\n";
     intExercise.Task2();
     intExercise.printMatrix();
 
-    std::cout << "\nВведите значения для матрицы 2x2 (double):\n";
+    std::cout << "\nEnter the values for the 2x2 (double) matrix:\n";
     RUT::IStreamGenerator<double> userInputGen;
     RUT::MyExercise<double> doubleExercise(2, 2, userInputGen);
 
     doubleExercise.fillMatrix();
-    std::cout << "Матрица, введённая пользователем:\n";
+    std::cout << "The matrix entered by the user:\n";
+    doubleExercise.printMatrix();
+
+    std::cout << "\nAfter Task1 (replacing the maximum modulo element with the opposite one):\n";
+    doubleExercise.Task1();
+    doubleExercise.printMatrix();
+
+    std::cout << "\nAfter Task2 (inserting the first row after each even row):\n";
+    doubleExercise.Task2();
     doubleExercise.printMatrix();
 
     return 0;
