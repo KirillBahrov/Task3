@@ -17,35 +17,29 @@ namespace MatrixTests
     public:
         TEST_METHOD(CtorExercise_ValidData_Success)
         {
-            // Подготавливаем фиктивный генератор
             RandomGenerator<int> gen(1, 100);
             MyExercise<int> exercise(3, 3, gen);
 
-            // Проверяем создание объекта
             Assert::AreEqual(exercise.matrix.getRows(), (size_t)3);
             Assert::AreEqual(exercise.matrix.getCols(), (size_t)3);
         }
 
         TEST_METHOD(CtorExercise_ValidData_WithGenerator_Success)
         {
-            // Подготавливаем фиктивный генератор
             RandomGenerator<int> gen(1, 100);
             MyExercise<int> exercise(4, 4, gen);
 
-            // Проверяем создание объекта
             Assert::AreEqual(exercise.matrix.getRows(), (size_t)4);
             Assert::AreEqual(exercise.matrix.getCols(), (size_t)4);
         }
 
         TEST_METHOD(FillMatrix_ValidData_FillSuccess)
         {
-            // Подготавливаем фиктивный генератор
             RandomGenerator<int> gen(1, 100);
             MyExercise<int> exercise(3, 3, gen);
 
             exercise.fillMatrix();
 
-            // Проверяем, что элементы матрицы изменились
             Assert::IsTrue(exercise.matrix[0][0] != 0);
             Assert::IsTrue(exercise.matrix[1][1] != 0);
             Assert::IsTrue(exercise.matrix[2][2] != 0);
@@ -56,14 +50,12 @@ namespace MatrixTests
             RandomGenerator<int> gen(1, 100);
             MyExercise<int> exercise(3, 3, gen);
 
-            // Задаем статические значения для теста
             exercise.matrix[0] = { 1, -10, 3 };
             exercise.matrix[1] = { 5, -6, 9 };
             exercise.matrix[2] = { -4, -2, -8 };
 
-            exercise.Task1(); // Применяем задачу
+            exercise.Task1(); 
 
-            // Проверяем, что максимальные по модулю элементы инвертировались
             Assert::AreEqual(exercise.matrix[0][1], 10);
             Assert::AreEqual(exercise.matrix[1][2], -9);
             Assert::AreEqual(exercise.matrix[2][2], 8);
@@ -74,15 +66,13 @@ namespace MatrixTests
             RandomGenerator<int> gen(1, 100);
             MyExercise<int> exercise(3, 3, gen);
 
-            // Задаем статические значения для теста
             exercise.matrix[0] = { 1, 2, 3 };
             exercise.matrix[1] = { 4, 5, 6 };
             exercise.matrix[2] = { 7, 8, 9 };
 
-            exercise.Task2(); // Применяем задачу
+            exercise.Task2(); 
 
-            // Проверяем количество строк в матрице
-            Assert::AreEqual(exercise.matrix.getRows(), (size_t)4); // Должно быть 5 строк после вставки
+            Assert::AreEqual(exercise.matrix.getRows(), (size_t)4);
         }
     };
 
@@ -113,7 +103,6 @@ namespace MatrixTests
 
             matrix.insertRow(1, { 10, 11, 12 });
 
-            // Проверяем, что строка вставилась
             Assert::AreEqual(matrix.getRows(), (size_t)4);
             Assert::AreEqual(matrix[1][0], 10);
             Assert::AreEqual(matrix[1][1], 11);
@@ -126,7 +115,6 @@ namespace MatrixTests
             matrix[0] = { 1, 2 };
             matrix[1] = { 3, 4 };
 
-            // Простой тест, проверим, что функция не вызывает ошибок (здесь важно, чтобы она вывела на экран)
             matrix.print();
         }
     };
