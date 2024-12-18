@@ -6,7 +6,6 @@
 #include "../Solver/Exercise.h"
 #include "../Solver/Matrix.h"
 #include <cstddef>
-#include <assert.h>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace RUT;

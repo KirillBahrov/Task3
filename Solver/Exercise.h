@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "Matrix.h"
 #include "Generator.h"
+#include <iostream>
 
 namespace RUT
 {
@@ -11,10 +12,13 @@ namespace RUT
      */
     class Exercise
     {
+    protected:
+        Matrix<T>* matrix;
+        std::ostream& out;
+        size_t rows;
+        size_t cols;
     public:
-        Matrix<T> matrix;
-        Generator<T>& generator;
-
+        Generator<T>* gen;
     
         /**
          * @brief Конструктор класса Exercise.
@@ -22,12 +26,12 @@ namespace RUT
          * @param cols Количество столбцов в матрице.
          * @param gen Ссылка на объект генератора значений.
          */
-        Exercise(size_t rows, size_t cols, Generator<T>& gen) : matrix(rows, cols), generator(gen) {}
+        Exercise(size_t rows, size_t cols, Generator<T>* gen, std::ostream& out); 
 
         /**
         * * @brief Деструктор класса Exercise (виртуальный).
          */
-        virtual ~Exercise() = default;
+        virtual ~Exercise() = 0 {};
 
         /**
          * @brief Чисто виртуальная функция для выполнения задачи 1.
@@ -40,21 +44,17 @@ namespace RUT
         virtual void Task2() = 0;
 
         /**
-         * @brief Заполняет матрицу случайными значениями, используя генератор.
-         */
-        void fillMatrix() 
-        {
-            for (size_t i = 0; i < matrix.getRows(); ++i)
-                for (size_t j = 0; j < matrix.getCols(); ++j)
-                    matrix[i][j] = generator.generate();
-        }
-
-        /**
          * @brief Выводит содержимое матрицы на стандартный вывод.
          */
         void printMatrix() const 
         {
-            matrix.print();
+            matrix.ToString();
         }
+        Exercise(size_t rows, size_t cols, Generator<T>& gen, std::ostream& out);
     };
+    template<typename T>
+    inline Exercise<T>::Exercise(size_t rows, size_t cols, Generator<T>& gen, std::ostream& out) : out {out}
+        {
+        this->matrix = new Matrix<T>{ rows, cols };
+        }
 }

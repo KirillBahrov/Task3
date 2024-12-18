@@ -23,7 +23,7 @@ namespace RUT
          * @param cols Количество столбцов в матрице.
          * @param defaultValue Значение по умолчанию для элементов матрицы.
          */
-        Matrix(size_t rows, size_t cols, T defaultValue = T{}) : rows(rows), cols(cols), data(rows, std::vector<T>(cols, defaultValue)) {}
+        Matrix(size_t rows, size_t cols, T defaultValue = T{})) : rows(rows), cols(cols), data(rows, std::vector<T>(cols, defaultValue)) {}
 
         /**
          * @brief Оператор доступа к элементам матрицы.

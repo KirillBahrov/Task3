@@ -23,31 +23,21 @@ namespace RUT
             : Exercise<T>(rows, cols, gen) {}
 
         /**
-        * @brief Устанавливает генератор значений для инициализации матрицы.
-        * @param gen Генератор значений.
-        */
-        void setGenerator(Generator<T>& gen)
-        {
-            this->generator = &gen; 
-            this->matrix.fillWithGenerator(*this->generator);
-        }
-
-        /**
-         * @brief Задача 1: Замена максимального по модулю элемента в каждой строке на его противоположное значение.
+         * @brief Задача 1: Замена максимального  элемента в каждой строке на его противоположное значение.
          */
-        void Task1() override 
+        void Task1() override
         {
-            for (size_t i = 0; i < this->matrix.getRows(); ++i) 
+            for (size_t i = 0; i < this->matrix.getRows(); ++i)
             {
                 auto& row = this->matrix[i];
-                auto maxElem = std::max_element(row.begin(), row.end(),
-                    [](T a, T b) { return std::abs(a) < std::abs(b); });
+                auto maxElem = std::max_element(row.begin(), row.end());
                 if (maxElem != row.end())
                 {
                     *maxElem = -*maxElem;
                 }
             }
         }
+
 
         /**
          * @brief Задача 2: Вставка первой строки после каждой второй строки матрицы.
