@@ -9,7 +9,8 @@ namespace RUT
      * @brief Класс Exercise представляет абстрактный базовый класс для работы с матрицами.
      * @tparam T Тип данных, используемый в матрице.
      */
-    class Exercise {
+    class Exercise
+    {
     public:
         Matrix<T> matrix;
         Generator<T>& generator;
@@ -41,24 +42,18 @@ namespace RUT
         /**
          * @brief Заполняет матрицу случайными значениями, используя генератор.
          */
-        void fillMatrix() {
+        void fillMatrix() 
+        {
             for (size_t i = 0; i < matrix.getRows(); ++i)
                 for (size_t j = 0; j < matrix.getCols(); ++j)
                     matrix[i][j] = generator.generate();
         }
 
-        /*/**
-        * @brief функция получения указателя на матрицу
-        
-        getMatrix() const
-        {
-            return matrix;
-        }*/
-
         /**
          * @brief Выводит содержимое матрицы на стандартный вывод.
          */
-        void printMatrix() const {
+        void printMatrix() const 
+        {
             matrix.print();
         }
     };

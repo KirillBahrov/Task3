@@ -10,7 +10,8 @@ namespace RUT
      * @brief Класс MyExercise представляет собой производный класс от Exercise,который реализует конкретные задачи работы с матрицей.
      * @tparam T Тип данных, который будет храниться в матрице.
      */
-    class MyExercise : public Exercise<T> {
+    class MyExercise : public Exercise<T>
+    {
     public:
         /**
          * @brief Конструктор класса MyExercise.
@@ -25,20 +26,24 @@ namespace RUT
         * @brief Устанавливает генератор значений для инициализации матрицы.
         * @param gen Генератор значений.
         */
-        void setGenerator(Generator<T>& gen) {
-            this->generator = &gen; // Установка генератора в базовом классе
-            this->matrix.fillWithGenerator(*this->generator); // Заполнение матрицы с помощью нового генератора
+        void setGenerator(Generator<T>& gen)
+        {
+            this->generator = &gen; 
+            this->matrix.fillWithGenerator(*this->generator);
         }
 
         /**
          * @brief Задача 1: Замена максимального по модулю элемента в каждой строке на его противоположное значение.
          */
-        void Task1() override {
-            for (size_t i = 0; i < this->matrix.getRows(); ++i) {
+        void Task1() override 
+        {
+            for (size_t i = 0; i < this->matrix.getRows(); ++i) 
+            {
                 auto& row = this->matrix[i];
                 auto maxElem = std::max_element(row.begin(), row.end(),
                     [](T a, T b) { return std::abs(a) < std::abs(b); });
-                if (maxElem != row.end()) {
+                if (maxElem != row.end())
+                {
                     *maxElem = -*maxElem;
                 }
             }
@@ -47,10 +52,13 @@ namespace RUT
         /**
          * @brief Задача 2: Вставка первой строки после каждой второй строки матрицы.
          */
-        void Task2() override {
+        void Task2() override
+        {
             size_t initialRows = this->matrix.getRows();
-            for (size_t i = 0; i < initialRows; ++i) {
-                if ((i + 1) % 2 == 0) {
+            for (size_t i = 0; i < initialRows; ++i) 
+            {
+                if ((i + 1) % 2 == 0) 
+                {
                     this->matrix.insertRow(i + 1, this->matrix[0]);
                     ++i;
                 }

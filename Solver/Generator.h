@@ -7,7 +7,8 @@ namespace RUT
      * @brief Абстрактный класс Generator представляет генератор значений.
      * @tparam T Тип данных, которые будет генерировать класс-наследник.
      */
-    class Generator {
+    class Generator
+    {
     public:
         /**
         * @brief Виртуальный деструктор

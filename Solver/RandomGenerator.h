@@ -10,7 +10,8 @@ namespace RUT
      * @brief Класс RandomGenerator реализует генератор случайных чисел,
      * @tparam T Тип данных, который будет генерироваться (целые или вещественные числа).
      */
-    class RandomGenerator : public Generator<T> {
+    class RandomGenerator : public Generator<T>
+    {
     private:
         std::mt19937 generator;
         typename std::conditional<std::is_integral<T>::value,

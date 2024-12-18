@@ -9,7 +9,8 @@ namespace RUT
      * @brief Класс IStreamGenerator реализует генератор значений из входного потока.
      * @tparam T Тип данных, которые будет генерировать класс IStreamGenerator.
      */
-    class IStreamGenerator : public Generator<T> {
+    class IStreamGenerator : public Generator<T> 
+    {
     private:
         std::istream& inputStream;
 
@@ -24,7 +25,8 @@ namespace RUT
          * @brief Генерирует значение типа T, считывая его из входного потока.
          * @return T Считанное значение типа T из входного потока.
          */
-        T generate() override {
+        T generate() override
+        {
             T value;
             inputStream >> value;
             return value;

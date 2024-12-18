@@ -10,7 +10,8 @@ namespace RUT
      * @brief Класс Matrix представляет собой двумерный массив произвольного типа.
      * @tparam T Тип данных, который будет храниться в матрице.
      */
-    class Matrix {
+    class Matrix
+    {
     private:
         std::vector<std::vector<T>> data;
 
@@ -54,8 +55,10 @@ namespace RUT
          * @param pos Позиция, на которую нужно вставить строку.
          * @param row Вектор, представляющий строку для вставки.
          */
-        void insertRow(size_t pos, const std::vector<T>& row) {
-            if (pos <= data.size()) {
+        void insertRow(size_t pos, const std::vector<T>& row)
+        {
+            if (pos <= data.size())
+            {
                 data.insert(data.begin() + pos, row);
             }
         }
@@ -63,9 +66,12 @@ namespace RUT
         /**
          * @brief Выводит содержимое матрицы на экран.
          */
-        void print() const {
-            for (const auto& row : data) {
-                for (const auto& elem : row) {
+        void print() const
+        {
+            for (const auto& row : data) 
+            {
+                for (const auto& elem : row) 
+                {
                     std::cout << std::setw(5) << elem << " ";
                 }
                 std::cout << "\n";
