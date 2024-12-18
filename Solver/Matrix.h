@@ -14,6 +14,9 @@ namespace RUT
     {
     private:
         std::vector<std::vector<T>> data;
+    protected:
+        size_t rows;
+        size_t cols;
 
     public:
         Generator<T>* gen;
@@ -23,21 +26,27 @@ namespace RUT
          * @param cols Количество столбцов в матрице.
          * @param defaultValue Значение по умолчанию для элементов матрицы.
          */
-        Matrix(size_t rows, size_t cols, T defaultValue = T{}) : rows(rows), cols(cols), data(rows, std::vector<T>(cols, defaultValue)) {}
+        Matrix(int rows, int cols) : rows(rows), cols(cols), data(rows, std::vector<T>(cols)) 
+        {
+            if (rows < 0 || cols < 0)
+            {
+                throw std::logic_error("The matrix is not correct");
+            }
+        }
 
         /**
          * @brief Оператор доступа к элементам матрицы.
          * @param row Индекс строки, к которой нужно получить доступ.
          * @return std::vector<T>& Ссылка на строку матрицы.
          */
-        std::vector<T>& operator[](size_t row) { return data[row]; }
+        std::vector<T>& operator[](int row) { return data[row]; }
 
         /**
          * @brief Оператор доступа к элементам матрицы.
          * @param row Индекс строки, к которой нужно получить доступ.
          * @return const std::vector<T>& Константная ссылка на строку матрицы.
          */
-        const std::vector<T>& operator[](size_t row) const { return data[row]; }
+        const std::vector<T>& operator[](int row) const { return data[row]; }
 
         /**
          * @brief Получает количество строк в матрице.
@@ -84,14 +93,14 @@ namespace RUT
         }
 
         std::string Matrix<T>::ToString() const {
-            std::string result;
+            std::stringstream buffer{};
             for (const auto& row : data) {
                 for (const auto& elem : row) {
-                    result += std::to_string(elem) + " ";
+                    buffer << elem << " ";
                 }
-                result += "\n";
+                buffer << "\n";
             }
-            return result;
+            return buffer.str();
         }
     };
 }
