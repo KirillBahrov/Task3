@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "Exercise.h"
+#include "Matrix.h"
 #include <algorithm>
 #include <cmath>
 

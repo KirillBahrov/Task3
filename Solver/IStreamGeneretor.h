@@ -19,7 +19,7 @@ namespace RUT
          * @brief Конструктор класса IStreamGenerator.
          * @param in Ссылка на входной поток (по умолчанию std::cin).
          */
-        IStreamGenerator(std::istream& in = std::cin) : inputStream(in) {}
+        explicit IStreamGenerator(std::istream& in = std::cin) : inputStream(in) {}
 
         /**
          * @brief Генерирует значение типа T, считывая его из входного потока.

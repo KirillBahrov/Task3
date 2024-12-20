@@ -12,11 +12,11 @@ namespace RUT
      */
     class Exercise
     {
-    protected:
+    public:
         Matrix<T>* matrix;
         std::ostream& out;
         Generator<T>* gen;
-    public:
+    
     
         /**
          * @brief Конструктор класса Exercise.
@@ -24,7 +24,7 @@ namespace RUT
          * @param cols Количество столбцов в матрице.
          * @param gen Ссылка на объект генератора значений.
          */
-        Exercise(int rows, int cols, Generator<T>* gen, std::ostream& out); 
+        Exercise(int rows, int cols, Generator<T>& gen, std::ostream& out);
 
         /**
         * * @brief Деструктор класса Exercise (виртуальный).
@@ -48,7 +48,7 @@ namespace RUT
         {
             matrix.ToString();
         }
-        Exercise(int rows, int cols, Generator<T>& gen, std::ostream& out);
+        
     };
     template<typename T>
     inline Exercise<T>::Exercise(int rows, int cols, Generator<T>& gen, std::ostream& out) : out {out}

@@ -13,7 +13,7 @@ namespace RUT
         /**
         * @brief Виртуальный деструктор
          */
-        virtual ~Generator() = default;
+        virtual ~Generator() {}
 
         /**
          * @brief Чисто виртуальная функция для генерации значения типа T

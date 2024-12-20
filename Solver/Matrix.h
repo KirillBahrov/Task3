@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "Generator.h"
 #include <vector>
 #include <iostream>
 #include <iomanip>
@@ -52,7 +53,9 @@ namespace RUT
          * @brief Получает количество строк в матрице.
          * @return size_t Количество строк в матрице.
          */
-        size_t getRows() const { return data.size(); }
+        size_t getRows() const {
+            return rows;
+            /*return data.size();*/ }
 
         /**
          * @brief Получает количество столбцов в матрице.
@@ -76,7 +79,7 @@ namespace RUT
         /**
         * @brief Заполняет матрицу случайными значениями, используя генератор.
          */
-        void fillMatrix(Generator* gen)
+        void fillMatrix(Generator<T>* gen)
         {
             if (gen == nullptr)
             {
@@ -85,14 +88,14 @@ namespace RUT
 
             for (size_t i = 0; i < this->rows; ++i)
             {
-                for (size_t j = 0; j < this->columns; ++j)
+                for (size_t j = 0; j < this->cols; ++j)
                 {
                     this->data[i][j] = gen->generate();
                 }
             }
         }
 
-        std::string Matrix<T>::ToString() const {
+        std::string ToString() const {
             std::stringstream buffer{};
             for (const auto& row : data) {
                 for (const auto& elem : row) {
